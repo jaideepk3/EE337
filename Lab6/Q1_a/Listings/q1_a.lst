@@ -1,0 +1,84 @@
+A51 MACRO ASSEMBLER  Q1_A                                                                 03/06/2022 13:07:35 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q1_a.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE q1_a.a51 SET(SMALL) DEBUG PRINT(.\Listings\q1_a.lst) OBJECT(.\Objects\q1_a
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+                       4     
+0100                   5     MAIN:
+0100 759000            6             MOV P1, #0H
+0103                   7             HERE:
+0103 7590FF            8                     MOV P1, #0FFH
+0106                   9                     DELAY1:
+0106 C000             10                             PUSH 0H
+0108 780F             11                             MOV R0, #0FH
+010A                  12                             AGAIN1:
+010A 311F             13                                     ACALL DELAY
+010C D8FC             14                                     DJNZ R0, AGAIN1
+010E D000             15                             POP 0H
+0110 759000           16             MOV P1, #0H
+0113                  17                     DELAY2:
+0113 C000             18                             PUSH 0H
+0115 780F             19                             MOV R0, #0FH
+0117                  20                             AGAIN2:
+0117 311F             21                                     ACALL DELAY
+0119 D8FC             22                                     DJNZ R0, AGAIN2
+011B D000             23                             POP 0H
+011D 80E4             24             SJMP HERE
+                      25     
+011F                  26     DELAY:
+011F 758901           27             MOV TMOD, #01H
+0122 8531F0           28             MOV B, 31H
+0125 7400             29             MOV A, #00H
+0127 95F0             30             SUBB A, B
+0129 F536             31             MOV 36H, A                              ;SUBB a,b               a=#00h   b=count va
+                             lue   - a will have the 2's complimemt of count
+012B 8530F0           32             MOV B, 30H
+012E 7400             33             MOV A, #00H
+0130 95F0             34             SUBB A, B
+0132 F535             35             MOV 35H, A
+0134 85368A           36             MOV TL0, 36H
+0137 85358C           37             MOV TH0, 35H
+013A D28C             38             SETB TR0
+013C 308DFD           39             LOOP: JNB TF0, LOOP
+013F C28C             40             CLR TR0
+0141 C28D             41             CLR TF0
+0143 22               42     RET
+                      43     
+                      44     END
+A51 MACRO ASSEMBLER  Q1_A                                                                 03/06/2022 13:07:35 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN1 . . . . . .  C ADDR   010AH   A   
+AGAIN2 . . . . . .  C ADDR   0117H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY. . . . . . .  C ADDR   011FH   A   
+DELAY1 . . . . . .  C ADDR   0106H   A   
+DELAY2 . . . . . .  C ADDR   0113H   A   
+HERE . . . . . . .  C ADDR   0103H   A   
+LOOP . . . . . . .  C ADDR   013CH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

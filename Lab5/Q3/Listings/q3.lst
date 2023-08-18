@@ -1,0 +1,453 @@
+A51 MACRO ASSEMBLER  Q3                                                                   02/14/2022 00:57:19 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q3.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE q3.a51 SET(SMALL) DEBUG PRINT(.\Listings\q3.lst) OBJECT(.\Objects\q3.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  00A0                 1     LCD_data equ P2    ;LCD Data port
+  0080                 2     LCD_rs   equ P0.0  ;LCD Register Select
+  0081                 3     LCD_rw   equ P0.1  ;LCD Read/Write
+  0082                 4     LCD_en   equ P0.2  ;LCD Enable
+                       5     
+  0097                 6     LED1 EQU P1.7
+  0096                 7     LED2 EQU P1.6
+  0095                 8     LED3 EQU P1.5
+  0094                 9     LED4 EQU P1.4
+  0093                10     IN1 EQU P1.3
+  0092                11     IN2 EQU P1.2
+  0091                12     IN3 EQU P1.1
+  0090                13     IN4 EQU P1.0
+                      14     
+0000                  15     ORG 0H
+0000 8136             16     JMP MAIN
+                      17     
+0300                  18     ORG 300H
+                      19     ;------------- ROM text strings------------------------------------------------------------
+                             ---
+0300                  20     my_string1:
+0300 456E7465         21              DB   "Enter Inputs", 00H
+0304 7220496E                
+0308 70757473                
+030C 00                      
+030D                  22     my_string2:
+030D 45453333         23                      DB   "EE337-2022", 00H
+0311 372D3230                
+0315 323200                  
+0318                  24     my_string3:
+0318 52656164         25                      DB   "Reading Inputs", 00H
+031C 696E6720                
+0320 496E7075                
+0324 747300                  
+0327                  26     my_string4:
+0327 436F6D70         27                      DB   "Computing Results", 00H
+032B 7574696E                
+032F 67205265                
+0333 73756C74                
+0337 7300                    
+0339                  28     my_string5:
+0339 4E756D31         29                      DB   "Num1:", 00H
+033D 3A00                    
+033F                  30     my_string6:
+033F 2C204E75         31                      DB   ", Num2:", 00H
+0343 6D323A00                
+0347                  32     my_string7:
+0347 52657375         33                      DB   "Result = ", 00H
+034B 6C74203D                
+034F 2000                    
+                      34     
+0100                  35     ORG 100H
+0100                  36     START:
+0100                  37             S0:
+0100 318E             38                     ACALL lcd_init
+0102 7482             39                     mov a,#82h
+0104 31CB             40                     acall lcd_command
+0106 31F9             41                     acall delay
+A51 MACRO ASSEMBLER  Q3                                                                   02/14/2022 00:57:19 PAGE     2
+
+0108 900300           42                     mov   dptr,#my_string1
+010B 31EB             43                     acall lcd_sendstring
+010D 31F9             44                     acall delay
+                      45     
+010F 74C3             46                     mov a,#0C3h
+0111 31CB             47                     acall lcd_command
+0113 31F9             48                     acall delay
+0115 90030D           49                     mov   dptr,#my_string2
+0118 31EB             50                     acall lcd_sendstring
+011A 31F9             51                     ACALL delay
+011C 22               52             RET
+011D                  53             S1_4:
+011D 318E             54                     ACALL lcd_init
+011F 7481             55                     MOV A, #081H
+0121 31CB             56                     ACALL lcd_command
+0123 31F9             57                     ACALL delay
+0125 900318           58                     MOV DPTR,#my_string3
+0128 31EB             59                     ACALL lcd_sendstring
+012A 31F9             60                     ACALL delay
+                      61                     
+012C 74C3             62                     MOV A, #0C3H
+012E 31CB             63                     ACALL lcd_command
+0130 31F9             64                     ACALL delay
+0132 90030D           65                     MOV dptr,#my_string2
+0135 31EB             66                     ACALL lcd_sendstring
+0137 31F9             67                     ACALL delay
+0139 22               68             RET
+013A                  69             S5:
+013A 318E             70                     ACALL lcd_init
+013C 7480             71                     MOV A, #80H
+013E 31CB             72                     ACALL lcd_command
+0140 31F9             73                     ACALL delay
+0142 900327           74                     MOV dptr,#my_string4
+0145 31EB             75                     ACALL lcd_sendstring
+0147 31F9             76                     ACALL delay
+                      77                     
+0149 74C0             78                     MOV A, #0C0H
+014B 31CB             79                     ACALL lcd_command
+014D 31F9             80                     ACALL delay
+014F 900339           81                     MOV dptr, #my_string5
+0152 31EB             82                     ACALL lcd_sendstring
+0154 31F9             83                     ACALL delay
+                      84                     
+0156 74C7             85                     MOV A, #0C7H
+0158 31CB             86                     ACALL lcd_command
+015A 31F9             87                     ACALL delay
+015C 90033F           88                     MOV dptr, #my_string6
+015F 31EB             89                     ACALL lcd_sendstring
+0161 31F9             90                     ACALL delay
+0163 22               91             RET
+0164                  92             S6:
+0164 318E             93                     ACALL lcd_init
+0166 7482             94                     MOV A, #82H
+0168 31CB             95                     ACALL lcd_command
+016A 31F9             96                     ACALL delay
+016C 900347           97                     MOV dptr,#my_string7
+016F 31EB             98                     ACALL lcd_sendstring
+0171 31F9             99                     ACALL delay     
+                     100                     
+0173 74C0            101                     MOV A, #0C0H
+0175 31CB            102                     ACALL lcd_command
+0177 31F9            103                     ACALL delay
+0179 900339          104                     MOV dptr, #my_string5
+017C 31EB            105                     ACALL lcd_sendstring
+017E 31F9            106                     ACALL delay
+                     107                     
+A51 MACRO ASSEMBLER  Q3                                                                   02/14/2022 00:57:19 PAGE     3
+
+0180 74C7            108                     MOV A, #0C7H
+0182 31CB            109                     ACALL lcd_command
+0184 31F9            110                     ACALL delay
+0186 90033F          111                     MOV dptr, #my_string6
+0189 31EB            112                     ACALL lcd_sendstring
+018B 31F9            113                     ACALL delay
+018D 22              114             RET
+                     115     
+                     116     ;------------------------LCD Initialisation routine----------------------------------------
+                             ------------
+018E                 117     lcd_init:
+018E 75A038          118              mov   LCD_data,#38H  ;Function set: 2 Line, 8-bit, 5x7 dots
+0191 C280            119              clr   LCD_rs         ;Selected command register
+0193 C281            120              clr   LCD_rw         ;We are writing in instruction register
+0195 D282            121              setb  LCD_en         ;Enable H->L
+0197 31F9            122                      acall delay
+0199 C282            123              clr   LCD_en
+019B 31F9            124                  acall delay
+                     125     
+019D 75A00C          126              mov   LCD_data,#0CH  ;Display on, Curson off
+01A0 C280            127              clr   LCD_rs         ;Selected instruction register
+01A2 C281            128              clr   LCD_rw         ;We are writing in instruction register
+01A4 D282            129              setb  LCD_en         ;Enable H->L
+01A6 31F9            130                      acall delay
+01A8 C282            131              clr   LCD_en
+                     132              
+01AA 31F9            133                      acall delay
+01AC 75A001          134              mov   LCD_data,#01H  ;Clear LCD
+01AF C280            135              clr   LCD_rs         ;Selected command register
+01B1 C281            136              clr   LCD_rw         ;We are writing in instruction register
+01B3 D282            137              setb  LCD_en         ;Enable H->L
+01B5 31F9            138                      acall delay
+01B7 C282            139              clr   LCD_en
+                     140              
+01B9 31F9            141                      acall delay
+                     142     
+01BB 75A006          143              mov   LCD_data,#06H  ;Entry mode, auto increment with no shift
+01BE C280            144              clr   LCD_rs         ;Selected command register
+01C0 C281            145              clr   LCD_rw         ;We are writing in instruction register
+01C2 D282            146              setb  LCD_en         ;Enable H->L
+01C4 31F9            147                      acall delay
+01C6 C282            148              clr   LCD_en
+                     149     
+01C8 31F9            150                      acall delay
+                     151              
+01CA 22              152              ret                  ;Return from routine
+                     153     
+                     154     ;-----------------------command sending routine-------------------------------------
+01CB                 155      lcd_command:
+01CB F5A0            156              mov   LCD_data,A     ;Move the command to LCD port
+01CD C280            157              clr   LCD_rs         ;Selected command register
+01CF C281            158              clr   LCD_rw         ;We are writing in instruction register
+01D1 D282            159              setb  LCD_en         ;Enable H->L
+01D3 31F9            160                      acall delay
+01D5 C282            161              clr   LCD_en
+01D7 31F9            162                      acall delay
+                     163      
+01D9 22              164              ret  
+                     165     ;-----------------------data sending routine-------------------------------------          
+                                       
+01DA                 166      lcd_senddata:
+01DA F5A0            167              mov   LCD_data,A     ;Move the command to LCD port
+01DC D280            168              setb  LCD_rs         ;Selected data register
+01DE C281            169              clr   LCD_rw         ;We are writing
+01E0 D282            170              setb  LCD_en         ;Enable H->L
+01E2 31F9            171                      acall delay
+A51 MACRO ASSEMBLER  Q3                                                                   02/14/2022 00:57:19 PAGE     4
+
+01E4 C282            172              clr   LCD_en
+01E6 31F9            173              acall delay
+01E8 31F9            174                      acall delay
+01EA 22              175              ret                  ;Return from busy routine
+                     176     
+                     177     ;-----------------------text strings sending routine-------------------------------------
+01EB                 178     lcd_sendstring:
+01EB C0E0            179             push 0e0h
+01ED                 180             lcd_sendstring_loop:
+01ED E4              181                      clr   a                 ;clear Accumulator for any previous data
+01EE 93              182                      movc  a,@a+dptr         ;load the first character in accumulator
+01EF 6005            183                      jz    exit              ;go to exit if zero
+01F1 31DA            184                      acall lcd_senddata      ;send first char
+01F3 A3              185                      inc   dptr              ;increment data pointer
+01F4 80F7            186                      sjmp  LCD_sendstring_loop    ;jump back to send the next character
+01F6 D0E0            187     exit:    pop 0e0h
+01F8 22              188              ret                     ;End of routine
+                     189     
+                     190     ;----------------------delay routine-----------------------------------------------------
+01F9 C000            191     delay:   push 0
+01FB C001            192              push 1
+01FD 7801            193              mov r0,#1
+01FF 79FF            194     loop2:   mov r1,#255
+0201 D9FE            195              loop1:  djnz r1, loop1
+0203 D8FA            196              djnz r0, loop2
+0205 D001            197              pop 1
+0207 D000            198              pop 0 
+0209 22              199              ret
+                     200     
+0400                 201     ORG 400H
+                     202     ;-------------------------CONVERTING TO ASCII-------------------------
+0400                 203     ASCII:
+0400 E540            204              MOV A, 40H
+0402 75F010          205              MOV B, #10H
+0405 84              206              DIV AB
+0406 F541            207              MOV 41H, A                             ;Upper Nibble
+0408 85F042          208          MOV 42H, B                         ;Lower Nibble
+040B                 209          UPPER:
+040B E541            210                             MOV A, 41H
+040D 2430            211                             ADD A, #30H
+040F F543            212                             MOV 43H, A
+0411 75F03A          213                             MOV B, #3AH
+0414 84              214                             DIV AB
+0415 6006            215                             JZ FINU
+0417 E5F0            216                             MOV A, B
+0419 2441            217                             ADD A, #41H
+041B F543            218                             MOV 43H, A
+041D                 219                             FINU:
+041D 854345          220                                             MOV 45H, 43H
+0420                 221              LOWER:
+0420 E542            222                             MOV A, 42H
+0422 2430            223                             ADD A, #30H
+0424 F544            224                             MOV 44H, A
+0426 75F03A          225                             MOV B, #3AH
+0429 84              226                             DIV AB
+042A 6006            227                             JZ FINL
+042C E5F0            228                             MOV A, B
+042E 2441            229                             ADD A, #41H
+0430 F544            230                             MOV 44H, A
+0432                 231                             FINL:
+0432 854446          232                                     MOV 46H, 44H
+                     233     
+0435 22              234             RET
+                     235     
+                     236     
+                     237     ;-------------------------------------MAIN-------------------------------------
+A51 MACRO ASSEMBLER  Q3                                                                   02/14/2022 00:57:19 PAGE     5
+
+0436                 238     MAIN:
+0436 75A000          239             mov P2,#00h
+0439 759000          240         mov P1,#00h
+043C 31F9            241         acall delay
+043E 31F9            242             acall delay
+0440 318E            243             acall lcd_init
+0442 31F9            244             acall delay
+0444 31F9            245             acall delay
+0446 31F9            246             acall delay
+0448 D297            247             SETB LED1
+044A D296            248             SETB LED2
+044C D295            249             SETB LED3
+044E D294            250             SETB LED4
+0450 120100          251             LCALL S0
+0453 120507          252             LCALL DELAY_1S
+0456 318E            253             ACALL lcd_init
+0458 C296            254             CLR LED2
+045A C295            255             CLR LED3
+045C C294            256             CLR LED4
+045E 12011D          257             LCALL S1_4
+0461 120507          258             LCALL DELAY_1S
+0464 120507          259             LCALL DELAY_1S
+0467 E590            260             MOV A, P1
+0469 75F010          261             MOV B, #10H
+046C A4              262             MUL AB
+046D F540            263             MOV 40H, A
+046F 318E            264             ACALL lcd_init
+0471 C297            265             CLR LED1
+0473 D296            266             SETB LED2
+0475 12011D          267             LCALL S1_4
+0478 120507          268             LCALL DELAY_1S
+047B 120507          269             LCALL DELAY_1S
+047E E590            270             MOV A, P1
+0480 75F010          271             MOV B, #10H
+0483 84              272             DIV AB
+0484 E540            273             MOV A, 40H
+0486 25F0            274             ADD A, B
+0488 F530            275             MOV 30H, A
+048A 318E            276             ACALL lcd_init
+048C C296            277             CLR LED2
+048E D295            278             SETB LED3
+0490 12011D          279             LCALL S1_4
+0493 120507          280             LCALL DELAY_1S
+0496 120507          281             LCALL DELAY_1S
+0499 E590            282             MOV A, P1
+049B 75F010          283             MOV B, #10H
+049E A4              284             MUL AB
+049F F541            285             MOV 41H, A
+04A1 318E            286             ACALL lcd_init
+04A3 C295            287             CLR LED3
+04A5 D294            288             SETB LED4
+04A7 12011D          289             LCALL S1_4
+04AA 120507          290             LCALL DELAY_1S
+04AD 120507          291             LCALL DELAY_1S
+04B0 E590            292             MOV A, P1
+04B2 75F010          293             MOV B, #10H
+04B5 84              294             DIV AB
+04B6 E541            295             MOV A, 41H
+04B8 25F0            296             ADD A, B
+04BA F531            297             MOV 31H, A
+04BC 853040          298             MOV 40H, 30H
+04BF 120400          299             LCALL ASCII
+04C2 854570          300             MOV 70h, 45H
+04C5 854671          301             MOV 71h, 46H
+04C8 853140          302             MOV 40H, 31H
+04CB 120400          303             LCALL ASCII
+A51 MACRO ASSEMBLER  Q3                                                                   02/14/2022 00:57:19 PAGE     6
+
+04CE 854572          304             MOV 72h, 45H
+04D1 854673          305             MOV 73h, 46H
+04D4 C294            306             CLR LED4
+04D6 12013A          307             LCALL S5
+04D9 E530            308             MOV A, 30H
+04DB 8531F0          309             MOV B, 31H
+04DE A4              310             MUL AB
+04DF F550            311             MOV 50H, A
+04E1 85F051          312             MOV 51H, B
+04E4 120507          313             LCALL DELAY_1S
+04E7 120507          314             LCALL DELAY_1S
+04EA 855040          315             MOV 40H, 50H
+04ED 120400          316             LCALL ASCII
+04F0 854576          317             MOV 76h, 45H
+04F3 854677          318             MOV 77h, 46H
+04F6 855140          319             MOV 40H, 51H
+04F9 120400          320             LCALL ASCII
+04FC 854574          321             MOV 74h, 45H
+04FF 854675          322             MOV 75h, 46H
+0502 120164          323             LCALL S6
+0505 80FE            324     HERE: SJMP HERE
+0507                 325     DELAY_1S:
+0507 C000            326                     PUSH 00H
+0509 C001            327                     PUSH 01H
+050B 7905            328                     MOV R1, #05
+050D 78C8            329                     H4: MOV R0, #200
+050F B11A            330                     H3: ACALL delay_1ms
+0511 D8FC            331                     DJNZ R0, H3
+0513 D9F8            332                     DJNZ R1, H4
+0515 D001            333                     POP 01H
+0517 D000            334                     POP 00H
+0519 22              335                     RET
+051A                 336             delay_1ms:
+051A C000            337                     PUSH 00H
+051C 7804            338                     MOV R0, #4
+051E B125            339                     H2: ACALL delay_250us
+0520 D8FC            340                     DJNZ R0, H2
+0522 D000            341                     POP 00H
+0524 22              342                     RET
+0525                 343             delay_250us:
+0525 C000            344                     PUSH 00H
+0527 78F4            345                     MOV R0, #244
+0529 D8FE            346                     H1: DJNZ R0, H1
+052B D000            347                     POP 00H
+052D 22              348                     RET
+052E 22              349     RET
+                     350     END
+A51 MACRO ASSEMBLER  Q3                                                                   02/14/2022 00:57:19 PAGE     7
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E              T Y P E  V A L U E   ATTRIBUTES
+
+ASCII . . . . . . .  C ADDR   0400H   A   
+B . . . . . . . . .  D ADDR   00F0H   A   
+DELAY . . . . . . .  C ADDR   01F9H   A   
+DELAY_1MS . . . . .  C ADDR   051AH   A   
+DELAY_1S. . . . . .  C ADDR   0507H   A   
+DELAY_250US . . . .  C ADDR   0525H   A   
+EXIT. . . . . . . .  C ADDR   01F6H   A   
+FINL. . . . . . . .  C ADDR   0432H   A   
+FINU. . . . . . . .  C ADDR   041DH   A   
+H1. . . . . . . . .  C ADDR   0529H   A   
+H2. . . . . . . . .  C ADDR   051EH   A   
+H3. . . . . . . . .  C ADDR   050FH   A   
+H4. . . . . . . . .  C ADDR   050DH   A   
+HERE. . . . . . . .  C ADDR   0505H   A   
+IN1 . . . . . . . .  B ADDR   0090H.3 A   
+IN2 . . . . . . . .  B ADDR   0090H.2 A   
+IN3 . . . . . . . .  B ADDR   0090H.1 A   
+IN4 . . . . . . . .  B ADDR   0090H.0 A   
+LCD_COMMAND . . . .  C ADDR   01CBH   A   
+LCD_DATA. . . . . .  D ADDR   00A0H   A   
+LCD_EN. . . . . . .  B ADDR   0080H.2 A   
+LCD_INIT. . . . . .  C ADDR   018EH   A   
+LCD_RS. . . . . . .  B ADDR   0080H.0 A   
+LCD_RW. . . . . . .  B ADDR   0080H.1 A   
+LCD_SENDDATA. . . .  C ADDR   01DAH   A   
+LCD_SENDSTRING. . .  C ADDR   01EBH   A   
+LCD_SENDSTRING_LOOP  C ADDR   01EDH   A   
+LED1. . . . . . . .  B ADDR   0090H.7 A   
+LED2. . . . . . . .  B ADDR   0090H.6 A   
+LED3. . . . . . . .  B ADDR   0090H.5 A   
+LED4. . . . . . . .  B ADDR   0090H.4 A   
+LOOP1 . . . . . . .  C ADDR   0201H   A   
+LOOP2 . . . . . . .  C ADDR   01FFH   A   
+LOWER . . . . . . .  C ADDR   0420H   A   
+MAIN. . . . . . . .  C ADDR   0436H   A   
+MY_STRING1. . . . .  C ADDR   0300H   A   
+MY_STRING2. . . . .  C ADDR   030DH   A   
+MY_STRING3. . . . .  C ADDR   0318H   A   
+MY_STRING4. . . . .  C ADDR   0327H   A   
+MY_STRING5. . . . .  C ADDR   0339H   A   
+MY_STRING6. . . . .  C ADDR   033FH   A   
+MY_STRING7. . . . .  C ADDR   0347H   A   
+P0. . . . . . . . .  D ADDR   0080H   A   
+P1. . . . . . . . .  D ADDR   0090H   A   
+P2. . . . . . . . .  D ADDR   00A0H   A   
+S0. . . . . . . . .  C ADDR   0100H   A   
+S1_4. . . . . . . .  C ADDR   011DH   A   
+S5. . . . . . . . .  C ADDR   013AH   A   
+S6. . . . . . . . .  C ADDR   0164H   A   
+START . . . . . . .  C ADDR   0100H   A   
+UPPER . . . . . . .  C ADDR   040BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

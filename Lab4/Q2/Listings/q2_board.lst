@@ -1,0 +1,115 @@
+A51 MACRO ASSEMBLER  Q2_BOARD                                                             02/06/2022 18:10:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q2_board.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE q2_board.a51 SET(SMALL) DEBUG PRINT(.\Listings\q2_board.lst) OBJECT(.\Obje
+                      cts\q2_board.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0h
+0000 020100            2     ljmp main
+0100                   3     org 100h
+0100                   4     main:
+0100                   5           function:
+0100 755015            6               mov 50h,#15h;
+0103 755106            7               mov 51h,#06h;
+0106 755219            8               mov 52h,#19h;
+0109 755383            9               mov 53h,#83h;
+010C E550             10                mov A,50h;
+010E F590             11                mov p1,A;
+0110 315D             12                acall delay_200ms;
+0112 C4               13            swap A;
+0113 F590             14                mov p1,A;
+0115 315D             15                acall delay_200ms;
+0117 E4               16                clr A;
+0118 74F0             17                mov A,#0f0h;
+011A F590             18                mov p1,A;
+011C 315D             19                acall delay_200ms;
+011E E4               20                clr A;
+011F E551             21                mov A,51h;
+0121 F590             22                mov p1,A;
+0123 315D             23                acall delay_200ms;
+0125 C4               24            swap A;
+0126 F590             25                mov p1,A;
+0128 315D             26                acall delay_200ms;
+012A E4               27                clr A;
+012B 74F0             28                mov A,#0F0h;
+012D F590             29                mov p1,A;
+012F 315D             30                acall delay_200ms;
+0131 E4               31                clr A;
+0132 E552             32                mov A,52h;
+0134 F590             33                mov p1,A;
+0136 315D             34                acall delay_200ms;
+0138 C4               35            swap A;
+0139 F590             36                mov p1,A;
+013B 315D             37                acall delay_200ms;
+013D E4               38                clr A;
+013E E553             39                mov A,53h;
+0140 F590             40                mov p1,A;
+0142 315D             41                acall delay_200ms;
+0144 C4               42            swap A;
+0145 F590             43                mov p1,A;
+0147 315D             44                acall delay_200ms;
+0149 E4               45                clr A;
+014A 74F0             46                mov A,#0F0h;
+014C F590             47                mov p1,A;
+014E 315D             48                acall delay_200ms;
+0150 80AE             49                sjmp function;
+0152                  50     delay_1s:
+0152 C000             51             push 00h
+0154 7805             52             mov r0, #5
+0156 315D             53             h4: acall delay_200ms
+0158 D8FC             54             djnz r0, h4
+015A D000             55                     pop 00h;
+015C 22               56                     ret;     
+015D                  57     delay_200ms:
+A51 MACRO ASSEMBLER  Q2_BOARD                                                             02/06/2022 18:10:55 PAGE     2
+
+015D C000             58             push 00h
+015F 78C8             59             mov r0, #200
+0161 3168             60             h3: acall delay_1ms
+0163 D8FC             61             djnz r0, h3
+0165 D000             62                     pop 00h;
+0167 22               63                     ret;
+0168                  64     delay_1ms:
+0168 C000             65            push 00h
+016A 7804             66            mov r0, #4
+016C 3173             67            h2: acall delay_250us
+016E D8FC             68            djnz r0, h2
+0170 D000             69            pop 00h
+0172 22               70            ret
+0173                  71     delay_250us:
+0173 C000             72            push 00h
+0175 78F4             73            mov r0, #244
+0177 D8FE             74            h1: djnz r0, h1
+0179 D000             75            pop 00h
+017B 22               76            ret;
+017C 22               77     ret;
+                      78     end;
+A51 MACRO ASSEMBLER  Q2_BOARD                                                             02/06/2022 18:10:55 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_1MS. . . . .  C ADDR   0168H   A   
+DELAY_1S . . . . .  C ADDR   0152H   A   
+DELAY_200MS. . . .  C ADDR   015DH   A   
+DELAY_250US. . . .  C ADDR   0173H   A   
+FUNCTION . . . . .  C ADDR   0100H   A   
+H1 . . . . . . . .  C ADDR   0177H   A   
+H2 . . . . . . . .  C ADDR   016CH   A   
+H3 . . . . . . . .  C ADDR   0161H   A   
+H4 . . . . . . . .  C ADDR   0156H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

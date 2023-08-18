@@ -1,0 +1,82 @@
+A51 MACRO ASSEMBLER  EX2                                                                  01/30/2022 18:37:12 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ex2.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE ex2.a51 SET(SMALL) DEBUG PRINT(.\Listings\ex2.lst) OBJECT(.\Objects\ex2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL SEARCH
+                       6     
+0102 80FE              7     HERE: SJMP HERE
+0130                   8     ORG 130H
+                       9             
+0130                  10     SEARCH:
+0130 C3               11     CLR C
+0131 A830             12     MOV R0,30H
+0133 AA31             13     MOV R2,31H
+0135 AB32             14     MOV R3,32H
+0137 EA               15     MOV A,R2
+0138 602C             16     JZ L2
+013A 75F002           17     MOV B,#02H
+013D 84               18     DIV AB
+013E F534             19     MOV 34H,A
+0140 28               20     ADD A,R0
+0141 FD               21     MOV R5,A
+0142 F9               22     MOV R1,A
+0143 E7               23     MOV A,@R1
+0144 B53203           24     CJNE A,32H,L0
+0147 8933             25     MOV 33H,R1
+0149 22               26     RET
+                      27     
+014A                  28     L0:
+014A E534             29     MOV A,34H
+014C 6018             30     JZ L2
+014E 7400             31     MOV A,#00 ;D>S
+0150 3400             32     ADDC A,#00
+0152 7006             33     JNZ L1
+0154 853431           34     MOV 31H,34H
+0157 3130             35     CALL SEARCH
+0159 22               36     RET
+                      37     
+015A                  38     L1:
+015A C3               39     CLR C ;D<S
+015B 8D30             40     MOV 30H,R5
+015D E534             41     MOV A,34H
+015F 25F0             42     ADD A,B
+0161 F531             43     MOV 31H,A
+0163 3130             44     CALL SEARCH
+0165 22               45     RET
+                      46     
+0166                  47     L2:
+0166 75330E           48     MOV 33H,#0EH
+0169 22               49     RET
+                      50     
+                      51     END
+A51 MACRO ASSEMBLER  EX2                                                                  01/30/2022 18:37:12 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+L0 . . . . . . . .  C ADDR   014AH   A   
+L1 . . . . . . . .  C ADDR   015AH   A   
+L2 . . . . . . . .  C ADDR   0166H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+SEARCH . . . . . .  C ADDR   0130H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\serial.obj" 
+TO ".\Objects\q2" 
+PRINT(".\Listings\q2.m51") RAMSIZE(256) 

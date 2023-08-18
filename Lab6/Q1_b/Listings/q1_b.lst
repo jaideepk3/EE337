@@ -1,0 +1,73 @@
+A51 MACRO ASSEMBLER  Q1_B                                                                 03/06/2022 14:43:26 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q1_b.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE q1_b.a51 SET(SMALL) DEBUG PRINT(.\Listings\q1_b.lst) OBJECT(.\Objects\q1_b
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000                   2             HERE:
+0000 7590F0            3                     MOV P1, #0F0H
+0003 110C              4                     ACALL BLINKING_DELAY
+0005 759000            5                     MOV P1, #00H
+0008 110C              6                     ACALL BLINKING_DELAY
+000A 80F4              7                     SJMP HERE
+                       8     
+000C                   9     BLINKING_DELAY:
+000C 753004           10             MOV 30H, #04H
+000F AA30             11             MOV R2, 30H
+0011 1116             12                     L1:ACALL DELAY
+0013 DAFC             13                     DJNZ R2, L1
+0015 22               14                     RET
+                      15     
+                      16     
+                      17     
+0016                  18     DELAY:
+0016 7B28             19             MOV R3, #40 
+0018                  20             delay_25ms:
+0018 758901           21                     MOV TMOD,#01H            
+001B 7400             22                     MOV A, #0h                       
+001D 9450             23                     SUBB A, #50H
+001F F8               24                     MOV R0, A
+0020 7400             25                     MOV A, #0h
+0022 94C3             26                     SUBB A, #0C3H
+0024 F9               27                     MOV R1, A
+0025 898C             28                     MOV TH0, R1              
+0027 888A             29                     MOV TL0, R0                      
+0029 D28C             30                     SETB TR0                 
+002B                  31     LOOP: 
+002B 308DFD           32             JNB TF0, LOOP                    
+002E C28C             33             CLR TR0                          
+0030 C28D             34             CLR TF0                                  
+0032 DBE4             35             DJNZ R3, delay_25ms
+0034 22               36     RET
+                      37     END
+A51 MACRO ASSEMBLER  Q1_B                                                                 03/06/2022 14:43:26 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BLINKING_DELAY . .  C ADDR   000CH   A   
+DELAY. . . . . . .  C ADDR   0016H   A   
+DELAY_25MS . . . .  C ADDR   0018H   A   
+HERE . . . . . . .  C ADDR   0000H   A   
+L1 . . . . . . . .  C ADDR   0011H   A   
+LOOP . . . . . . .  C ADDR   002BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

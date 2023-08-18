@@ -1,0 +1,90 @@
+A51 MACRO ASSEMBLER  Q2                                                                   01/31/2022 14:48:52 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q2.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE q2.a51 SET(SMALL) DEBUG PRINT(.\Listings\q2.lst) OBJECT(.\Objects\q2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL SEARCH
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+0130                   8     SEARCH:
+                       9     
+0130 A930             10     MOV R1, 30H
+0132 E9               11     MOV A, R1
+0133 2531             12     ADD A, 31H
+0135 14               13     DEC A
+0136 F528             14     MOV 28H, A
+0138 313A             15     CALL FUN1  
+                      16     
+013A                  17     FUN1:
+013A E528             18     MOV A, 28H  
+013C B53000           19     CJNE A, 30H, F1  
+                      20     
+013F                  21     F1:
+013F 4026             22     JC F2  
+0141 9530             23     SUBB A, 30H
+0143 75F002           24     MOV b, #02H
+0146 84               25     DIV AB
+0147 2530             26     ADD A, 30H
+0149 F8               27     MOV R0, A   
+014A 314C             28     CALL COMPARE
+                      29     
+014C                  30     COMPARE:
+014C E532             31     MOV A, 32H
+014E 8629             32     MOV 29H, @R0  
+0150 B52904           33     CJNE A, 29H, FUN2
+0153 8833             34     MOV 33H, R0
+0155 80FE             35     THERE: SJMP THERE
+                      36     
+0157                  37     FUN2:
+0157 4002             38     JC X1
+0159 5006             39     JNC X2
+                      40     
+015B                  41     X1:
+015B E8               42     MOV A, R0
+015C 14               43     DEC A
+015D F528             44     MOV 28H, A
+015F 313A             45     CALL FUN1
+                      46     
+0161                  47     X2:
+0161 E8               48     MOV A, R0
+0162 04               49     INC A
+0163 F530             50     MOV 30H, A
+0165 313A             51     CALL FUN1
+                      52     
+0167                  53     F2:
+0167 75330E           54     MOV 33H, #0EH
+                      55     END
+A51 MACRO ASSEMBLER  Q2                                                                   01/31/2022 14:48:52 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+COMPARE. . . . . .  C ADDR   014CH   A   
+F1 . . . . . . . .  C ADDR   013FH   A   
+F2 . . . . . . . .  C ADDR   0167H   A   
+FUN1 . . . . . . .  C ADDR   013AH   A   
+FUN2 . . . . . . .  C ADDR   0157H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+SEARCH . . . . . .  C ADDR   0130H   A   
+THERE. . . . . . .  C ADDR   0155H   A   
+X1 . . . . . . . .  C ADDR   015BH   A   
+X2 . . . . . . . .  C ADDR   0161H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

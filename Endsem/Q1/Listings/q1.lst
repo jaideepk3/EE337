@@ -1,0 +1,298 @@
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 17:26:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE q1.a51 SET(SMALL) DEBUG PRINT(.\Listings\q1.lst) OBJECT(.\Objects\q1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL FIND1
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+0130                   8     FIND1:
+0130 7402              9     MOV A, #02H
+0132                  10     MOV 27H, @30H
+*** __________________________________^
+*** ___________________________________^
+*** ERROR #A9 IN 10 (q1.a51, LINE 10): SYNTAX ERROR
+*** ERROR #A9 IN 10 (q1.a51, LINE 10): SYNTAX ERROR
+0132 B52702           11     CJNE A, 27H, FIND2
+0135 3145             12     CALL ADDM1
+                      13     
+0137                  14     FIND2:
+0137 7403             15     MOV A, #03H
+0139                  16     MOV 28H, @30H
+*** __________________________________^
+*** ___________________________________^
+*** ERROR #A9 IN 16 (q1.a51, LINE 16): SYNTAX ERROR
+*** ERROR #A9 IN 16 (q1.a51, LINE 16): SYNTAX ERROR
+0139 B52802           17     CJNE A, 28H, FIND3
+013C 3162             18     CALL ADDM2
+                      19     
+013E                  20     FIND3:
+013E 7404             21     MOV A, #04H
+0140                  22     MOV 28H, @30H
+*** __________________________________^
+*** ___________________________________^
+*** ERROR #A9 IN 22 (q1.a51, LINE 22): SYNTAX ERROR
+*** ERROR #A9 IN 22 (q1.a51, LINE 22): SYNTAX ERROR
+0140 B528ED           23     CJNE A, 28H, FIND1
+0143 31A2             24     CALL ADDM3
+                      25     -------------------------------------------------------------
+*** _________________________^
+*** ERROR #A9 IN 25 (q1.a51, LINE 25): SYNTAX ERROR
+                      26     
+0145                  27     ADDM1:
+0145 E531             28     MOV A, 31H
+0147 8535F0           29     MOV B, 35H
+014A                  30     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 30 (q1.a51, LINE 30): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+014A F539             31     MOV 39H, A
+                      32     
+014C E532             33     MOV A, 32H
+014E 8536F0           34     MOV B, 36H
+0151                  35     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 35 (q1.a51, LINE 35): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0151 F540             36     MOV 40H, A
+                      37     
+0153 E533             38     MOV A, 33H
+0155 8537F0           39     MOV B, 37H
+0158                  40     ADD AB
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 17:26:14 PAGE     2
+
+*** _________________________^
+*** ERROR #A38 IN 40 (q1.a51, LINE 40): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0158 F541             41     MOV 41H, A
+                      42     
+015A E534             43     MOV A, 34H
+015C 8538F0           44     MOV B, 38H
+015F                  45     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 45 (q1.a51, LINE 45): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+015F F542             46     MOV 42H, A
+0161 22               47     RET
+                      48     ----------------------------------------------------------------
+*** _________________________^
+*** ERROR #A9 IN 48 (q1.a51, LINE 48): SYNTAX ERROR
+                      49     
+0162                  50     ADDM2:
+0162 E531             51     MOV A, 31H
+0164 853AF0           52     MOV B, 3AH
+0167                  53     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 53 (q1.a51, LINE 53): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0167 F543             54     MOV 43H, A
+                      55     
+0169 E532             56     MOV A, 32H
+016B 853BF0           57     MOV B, 3BH
+016E                  58     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 58 (q1.a51, LINE 58): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+016E F544             59     MOV 44H, A
+                      60     
+0170 E533             61     MOV A, 33H
+0172 853CF0           62     MOV B, 3CH
+0175                  63     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 63 (q1.a51, LINE 63): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0175 F545             64     MOV 45H, A
+                      65     
+0177 E534             66     MOV A, 34H
+0179 853DF0           67     MOV B, 3DH
+017C                  68     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 68 (q1.a51, LINE 68): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+017C F546             69     MOV 46H, A
+                      70     
+017E E535             71     MOV A, 35H
+0180 853EF0           72     MOV B, 3EH
+0183                  73     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 73 (q1.a51, LINE 73): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0183 F547             74     MOV 47H, A
+                      75     
+0185 E536             76     MOV A, 36H
+0187 853FF0           77     MOV B, 3FH
+018A                  78     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 78 (q1.a51, LINE 78): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+018A F548             79     MOV 48H, A
+                      80     
+018C E537             81     MOV A, 37H
+018E 8540F0           82     MOV B, 40H
+0191                  83     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 83 (q1.a51, LINE 83): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0191 F549             84     MOV 49H, A
+                      85     
+0193 E538             86     MOV A, 38H
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 17:26:14 PAGE     3
+
+0195 8541F0           87     MOV B, 41H
+0198                  88     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 88 (q1.a51, LINE 88): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0198 F54A             89     MOV 4AH, A
+                      90     
+019A E539             91     MOV A, 39H
+019C 8542F0           92     MOV B, 42H
+019F                  93     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 93 (q1.a51, LINE 93): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+019F F54B             94     MOV 4BH, A
+01A1 22               95     RET
+                      96     -----------------------------------------------------------------
+*** _________________________^
+*** ERROR #A9 IN 96 (q1.a51, LINE 96): SYNTAX ERROR
+                      97     
+01A2                  98     ADDM3:
+01A2 E531             99     MOV A, 31H
+01A4 8541F0          100     MOV B, 41H
+01A7                 101     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 101 (q1.a51, LINE 101): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01A7 F580            102     MOV 80H, A
+                     103     
+                     104     
+01A9 E532            105     MOV A, 32H
+01AB 8542F0          106     MOV B, 42H
+01AE                 107     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 107 (q1.a51, LINE 107): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01AE F581            108     MOV 81H, A
+                     109     
+01B0 E533            110     MOV A, 33H
+01B2 8543F0          111     MOV B, 43H
+01B5                 112     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 112 (q1.a51, LINE 112): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01B5 F582            113     MOV 82H, A
+                     114     
+01B7 E534            115     MOV A, 34H
+01B9 8544F0          116     MOV B, 44H
+01BC                 117     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 117 (q1.a51, LINE 117): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01BC F583            118     MOV 83H, A
+                     119     
+01BE E535            120     MOV A, 35H
+01C0 8545F0          121     MOV B, 45H
+01C3                 122     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 122 (q1.a51, LINE 122): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01C3 F584            123     MOV 84H, A
+                     124     
+01C5 E536            125     MOV A, 36H
+01C7 8546F0          126     MOV B, 46H
+01CA                 127     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 127 (q1.a51, LINE 127): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01CA F585            128     MOV 85H, A
+                     129     
+01CC E537            130     MOV A, 37H
+01CE 8547F0          131     MOV B, 47H
+01D1                 132     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 132 (q1.a51, LINE 132): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 17:26:14 PAGE     4
+
+01D1 F586            133     MOV 86H, A
+                     134     
+01D3 E538            135     MOV A, 38H
+01D5 8548F0          136     MOV B, 48H
+01D8                 137     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 137 (q1.a51, LINE 137): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01D8 F587            138     MOV 87H, A
+                     139     
+01DA E539            140     MOV A, 39H
+01DC 8549F0          141     MOV B, 49H
+01DF                 142     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 142 (q1.a51, LINE 142): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01DF F588            143     MOV 88H, A
+                     144     
+01E1 E53A            145     MOV A, 3AH
+01E3 854AF0          146     MOV B, 4AH
+01E6                 147     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 147 (q1.a51, LINE 147): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01E6 F589            148     MOV 89H, A
+                     149     
+01E8 E53B            150     MOV A, 3BH
+01EA 854BF0          151     MOV B, 4BH
+01ED                 152     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 152 (q1.a51, LINE 152): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01ED F58A            153     MOV 8AH, A
+                     154     
+01EF E53C            155     MOV A, 3CH
+01F1 854CF0          156     MOV B, 4CH
+01F4                 157     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 157 (q1.a51, LINE 157): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01F4 F58B            158     MOV 8BH, A
+                     159     
+01F6 E53D            160     MOV A, 3DH
+01F8 854DF0          161     MOV B, 4DH
+01FB                 162     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 162 (q1.a51, LINE 162): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+01FB F58C            163     MOV 8CH, A
+                     164     
+01FD E53E            165     MOV A, 3EH
+01FF 854EF0          166     MOV B, 4EH
+0202                 167     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 167 (q1.a51, LINE 167): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0202 F58D            168     MOV 8DH, A
+                     169     
+0204 E53F            170     MOV A, 3FH
+0206 854FF0          171     MOV B, 4FH
+0209                 172     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 172 (q1.a51, LINE 172): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0209 F58E            173     MOV 8EH, A
+                     174     
+020B E540            175     MOV A, 40H
+020D 8550F0          176     MOV B, 50H
+0210                 177     ADD AB
+*** _________________________^
+*** ERROR #A38 IN 177 (q1.a51, LINE 177): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0210 F58F            178     MOV 8FH, A
+                     179     
+                     180     
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 17:26:14 PAGE     5
+
+0212 22              181     RET
+                     182     END
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 17:26:14 PAGE     6
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADDM1. . . . . . .  C ADDR   0145H   A   
+ADDM2. . . . . . .  C ADDR   0162H   A   
+ADDM3. . . . . . .  C ADDR   01A2H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+FIND1. . . . . . .  C ADDR   0130H   A   
+FIND2. . . . . . .  C ADDR   0137H   A   
+FIND3. . . . . . .  C ADDR   013EH   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 38 ERROR(S)

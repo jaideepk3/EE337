@@ -1,0 +1,66 @@
+A51 MACRO ASSEMBLER  ASCII                                                                02/13/2022 23:00:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ascii.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE ascii.a51 SET(SMALL) DEBUG PRINT(.\Listings\ascii.lst) OBJECT(.\Objects\as
+                      cii.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H  
+0000 020100            2     LJMP MAIN 
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 E530              5              MOV A, 30H
+0102 75F010            6              MOV B, #10H
+0105 84                7              DIV AB
+0106 F540              8              MOV 40H, A                             ;Upper Nibble
+0108 85F041            9          MOV 41H, B                         ;Lower Nibble
+010B                  10          UPPER:
+010B E540             11                             MOV A, 40H
+010D 2430             12                             ADD A, #30H
+010F F545             13                             MOV 45H, A
+0111 75F03A           14                             MOV B, #3AH
+0114 84               15                             DIV AB
+0115 6006             16                             JZ FINU
+0117 E5F0             17                             MOV A, B
+0119 2441             18                             ADD A, #41H
+011B F545             19                             MOV 45H, A
+011D                  20                             FINU:
+011D 854560           21                                             MOV 60H, 45H
+0120                  22              LOWER:
+0120 E541             23                             MOV A, 41H
+0122 2430             24                             ADD A, #30H
+0124 F546             25                             MOV 46H, A
+0126 75F03A           26                             MOV B, #3AH
+0129 84               27                             DIV AB
+012A 6006             28                             JZ FINL
+012C E5F0             29                             MOV A, B
+012E 2441             30                             ADD A, #41H
+0130 F546             31                             MOV 46H, A
+0132                  32                             FINL:
+0132 854661           33                                     MOV 61H, 46H
+                      34     
+0135 22               35     RET                
+                      36     END
+A51 MACRO ASSEMBLER  ASCII                                                                02/13/2022 23:00:05 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+FINL . . . . . . .  C ADDR   0132H   A   
+FINU . . . . . . .  C ADDR   011DH   A   
+LOWER. . . . . . .  C ADDR   0120H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+UPPER. . . . . . .  C ADDR   010BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

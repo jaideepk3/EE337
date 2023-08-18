@@ -1,0 +1,57 @@
+A51 MACRO ASSEMBLER  Q1                                                                   01/24/2022 17:58:38 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q1.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE q1.a51 SET(SMALL) DEBUG PRINT(.\Listings\q1.lst) OBJECT(.\Objects\q1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     
+0000                   3     ORG 0H
+0000 020100            4     LJMP MAIN
+0100                   5     ORG 100H
+0100                   6     MAIN:
+0100 3130              7     CALL ADD16
+0102 80FE              8     HERE: SJMP HERE
+0130                   9     ORG 130H
+                      10     
+0130                  11     ADD16:
+                      12     
+0130 7570FF           13     MOV 70H, #0fFH
+0133 7571FF           14     MOV 71H, #0fFH
+0136 7572FF           15     MOV 72H, #0fFH
+0139 7573FF           16     MOV 73H, #0fFH
+013C E571             17     MOV A, 71H
+013E 8573F0           18     MOV B, 73H
+0141 25F0             19     ADD A, B
+0143 F576             20     MOV 76H, A
+0145 E570             21     MOV A, 70H
+0147 8572F0           22     MOV B, 72H
+014A 35F0             23     ADDC A, B
+014C F575             24     MOV 75H, A
+014E 7400             25     MOV A, #0H
+0150 3400             26     ADDC A, #0H
+0152 F574             27     MOV 74H, A
+                      28     
+0154 22               29     RET
+                      30     END
+A51 MACRO ASSEMBLER  Q1                                                                   01/24/2022 17:58:38 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADD16. . . . . . .  C ADDR   0130H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

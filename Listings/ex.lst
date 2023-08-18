@@ -1,0 +1,35 @@
+A51 MACRO ASSEMBLER  EX                                                                   01/28/2022 18:58:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ex.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE ex.a51 SET(SMALL) DEBUG PRINT(.\Listings\ex.lst) OBJECT(.\Objects\ex.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 74F3              1     MOV A, #0F3H
+0002 75F0E3            2     MOV B, #0E3H
+0005 84                3     DIV AB
+0006 6002              4     JZ LABEL2
+0008                   5     LABEL1:
+0008 2401              6     ADD A, #01H
+000A                   7     LABEL2:
+000A 2401              8     ADD A, #01H
+*** WARNING #A41 IN 8 (ex.a51, LINE 8): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  EX                                                                   01/28/2022 18:58:25 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+LABEL1 . . . . . .  C ADDR   0008H   A   
+LABEL2 . . . . . .  C ADDR   000AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  1 WARNING(S), 0 ERROR(S)
